@@ -1,0 +1,30 @@
+
+# MacOS specific
+.CFUserTextEncoding
+.DS_Store
+.Trash/
+Applications/
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music
+Pictures/
+Public/
+
+# Node.js
+.config
+.node-gyp/
+.npm/
+.nvm/
+
+# Shell files
+.bash_history
+.zsh_history
+.oh-my-zsh
+.zcompdump*
+.viminfo
+
+# Own directories
+projects/
