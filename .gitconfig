@@ -2,3 +2,6 @@
 [user]
 	name = Ali
 	email = ali@crunchtime.dev
+	signingkey = 5FBF194681A03B15
+[commit]
+	gpgsign = true

@@ -78,7 +78,6 @@ autoload -U add-zsh-hook
 load-nvmrc() {
   if [ -e "${PWD}/.nvmrc" ]
   then
-    echo "loading nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
     local node_version="$(nvm version)"
     local nvmrc_path="$(nvm_find_nvmrc)"
@@ -95,12 +94,12 @@ load-nvmrc() {
       echo "Reverting to nvm default version"
       nvm use default
     fi
-  else
-    echo "NOT loading NVM"
   fi
 }
 add-zsh-hook chpwd load-nvmrc
 [ -e "${PWD}/.nvmrc" ] && load-nvmrc
+
+ZSH_DISABLE_COMPFIX=true
 
 export NVM_DIR="$HOME/.nvm"
 
