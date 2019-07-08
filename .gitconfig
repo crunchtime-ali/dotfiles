@@ -5,3 +5,5 @@
 	signingkey = 5FBF194681A03B15
 [commit]
 	gpgsign = true
+[gpg]
+	program = gpg
