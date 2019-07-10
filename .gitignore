@@ -28,3 +28,5 @@ Public/
 
 # Own directories
 projects/
+
+.aws/

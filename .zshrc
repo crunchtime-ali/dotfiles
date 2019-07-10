@@ -138,3 +138,10 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status node_version root_indicator backgroun
 
 export GPG_TTY=$(tty)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The next line updates PATH for Netlify's Git Credential Helper.
+if [ -f '/Users/azigelsk/.netlify/helper/path.zsh.inc' ]; then source '/Users/azigelsk/.netlify/helper/path.zsh.inc'; fi
+
+alias k='kubectl'
+alias kctx='kubectx'
+alias kns='kubens'
