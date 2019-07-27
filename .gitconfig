@@ -1,8 +1,9 @@
 # This is Git's per-user configuration file.
-[user]
-	name = Ali
-	email = ali@crunchtime.dev
-	signingkey = 5FBF194681A03B15
+[include]
+  path = .gituser-default
+[includeIf "gitdir:~/obi/"]
+  path = .gituser-obi
+
 [commit]
 	gpgsign = true
 [gpg]
@@ -16,3 +17,5 @@
 # This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
 [include]
   path = /Users/azigelsk/.netlify/helper/git-config
+[tag]
+	forceSignAnnotated = true
