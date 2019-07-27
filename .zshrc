@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/azigelsk/.oh-my-zsh"
@@ -71,7 +72,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Add wisely, as too many plugins slow down shell startup.
 
 #plugins=(git autojump zsh-nvm)
-plugins=(git autojump)
+plugins=(git autojump zsh-autosuggestions)
 
 # Load NVM only when a .nvmrc is present
 autoload -U add-zsh-hook
@@ -142,6 +143,10 @@ export GPG_TTY=$(tty)
 # The next line updates PATH for Netlify's Git Credential Helper.
 if [ -f '/Users/azigelsk/.netlify/helper/path.zsh.inc' ]; then source '/Users/azigelsk/.netlify/helper/path.zsh.inc'; fi
 
+export GO111MODULE=on
+export GOPATH="${HOME}/go"
+
 alias k='kubectl'
 alias kctx='kubectx'
 alias kns='kubens'
+alias ll='exa -l'

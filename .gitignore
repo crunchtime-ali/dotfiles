@@ -27,6 +27,9 @@ Public/
 .viminfo
 
 # Own directories
+.ApacheDirectoryStudio/
+go/
+obi/
 projects/
 
 .aws/
