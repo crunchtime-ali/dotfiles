@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/azigelsk/.oh-my-zsh"
@@ -133,7 +136,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Powerlevel9k configuration
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs kubecontext)
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status node_version root_indicator background_jobs history)
 
@@ -145,8 +148,12 @@ if [ -f '/Users/azigelsk/.netlify/helper/path.zsh.inc' ]; then source '/Users/az
 
 export GO111MODULE=on
 export GOPATH="${HOME}/go"
+export HELM_TILLER_STORAGE=configmap
 
 alias k='kubectl'
 alias kctx='kubectx'
 alias kns='kubens'
 alias ll='exa -l'
+alias open='open -a Forklift'
+alias gl='open "$(git config remote.origin.url)" -a "Google Chrome.app"'
+alias ydl='youtube-dl -f m4a -o "%(title)s.%(ext)s" --embed-thumbnail --add-metadata  --metadata-from-title "%(artist)s - %(title)s"'
