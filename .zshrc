@@ -12,7 +12,6 @@ export ZSH="/Users/azigelsk/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Set list of themes to pick from when loading at random
@@ -135,10 +134,38 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Kubernetes Current Context/Namespace
+custom_prompt_kubecontext() {
+  local kubectl_version="$(kubectl version --client 2>/dev/null)"
+
+  if [[ -n "$kubectl_version" ]]; then
+    # Get the current Kuberenetes context
+    local cur_ctx=$(kubectl config view -o=jsonpath='{.current-context}')
+    cur_namespace="$(kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${cur_ctx}\")].context.namespace}")"
+    # If the namespace comes back empty set it default.
+    if [[ -z "${cur_namespace}" ]]; then
+      cur_namespace="default"
+    fi
+
+    local k8s_final_text="$cur_ctx/$cur_namespace"
+
+    local color='%F{black}'
+    [[ $cur_ctx == "prod" ]] && color='%F{196}'
+    echo -n "%{$color%}\U2388  $k8s_final_text%{%f%}" # \U2388 is Kubernetes Icon
+
+    #"$1_prompt_segment" "$0" "$2" "magenta" "black" "$k8s_final_text" "KUBERNETES_ICON"
+  fi
+}
+
 # Powerlevel9k configuration
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs kubecontext)
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_CUSTOM_KUBECONTEXT="custom_prompt_kubecontext"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs custom_kubecontext)
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status node_version root_indicator background_jobs history)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status node_version root_indicator background_jobs)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_NODE_VERSION_FOREGROUND='black'
+POWERLEVEL9K_CUSTOM_KUBECONTEXT_BACKGROUND='075'
 
 export GPG_TTY=$(tty)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -153,6 +180,8 @@ export HELM_TILLER_STORAGE=configmap
 alias k='kubectl'
 alias kctx='kubectx'
 alias kns='kubens'
+alias tf='terraform'
+alias mo='molecule'
 alias ll='exa -l'
 alias open='open -a Forklift'
 alias gl='open "$(git config remote.origin.url)" -a "Google Chrome.app"'
