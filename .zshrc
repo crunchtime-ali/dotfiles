@@ -6,7 +6,7 @@ export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/azigelsk/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -171,7 +171,7 @@ export GPG_TTY=$(tty)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # The next line updates PATH for Netlify's Git Credential Helper.
-if [ -f '/Users/azigelsk/.netlify/helper/path.zsh.inc' ]; then source '/Users/azigelsk/.netlify/helper/path.zsh.inc'; fi
+if [ -f '$HOME/.netlify/helper/path.zsh.inc' ]; then source '$HOME/.netlify/helper/path.zsh.inc'; fi
 
 export GO111MODULE=on
 export GOPATH="${HOME}/go"
