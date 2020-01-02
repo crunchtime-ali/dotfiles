@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -160,7 +160,7 @@ custom_prompt_kubecontext() {
 # Powerlevel9k configuration
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_CUSTOM_KUBECONTEXT="custom_prompt_kubecontext"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs custom_kubecontext)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs kubecontext)
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status node_version root_indicator background_jobs)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -186,3 +186,6 @@ alias ll='exa -l'
 alias open='open -a Forklift'
 alias gl='open "$(git config remote.origin.url)" -a "Google Chrome.app"'
 alias ydl='youtube-dl -f m4a -o "%(title)s.%(ext)s" --embed-thumbnail --add-metadata  --metadata-from-title "%(artist)s - %(title)s"'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
