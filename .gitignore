@@ -3,13 +3,14 @@
 .CFUserTextEncoding
 .DS_Store
 .Trash/
-Applications/
+Applications*/
 Desktop/
 Documents/
 Downloads/
 Library/
 Movies/
 Music
+Parallels/
 Pictures/
 Public/
 
@@ -32,6 +33,11 @@ Public/
 .zcompdump*
 .viminfo
 .wget-hsts
+
+# Docker
+.docker/.buildNodeID
+.docker/application-template
+.docker/plaintext-passwords.json
 
 # Own directories
 .ApacheDirectoryStudio/
