@@ -19,3 +19,10 @@
   path = /Users/azigelsk/.netlify/helper/git-config
 [tag]
 	forceSignAnnotated = true
+[core]
+    pager = delta --color-only
+
+[interactive]
+    diffFilter = delta --color-only
+[pull]
+	rebase = false

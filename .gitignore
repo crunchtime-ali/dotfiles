@@ -18,6 +18,12 @@ Public/
 .node-gyp/
 .npm/
 .nvm/
+.node_repl_history
+.yarnrc
+
+# Python
+.pylint.d/
+.python_history
 
 # Shell files
 .bash_history
@@ -25,6 +31,7 @@ Public/
 .oh-my-zsh
 .zcompdump*
 .viminfo
+.wget-hsts
 
 # Own directories
 .ApacheDirectoryStudio/
@@ -33,3 +40,4 @@ obi/
 projects/
 
 .aws/
+.oracle_jre_usage/
