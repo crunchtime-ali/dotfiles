@@ -3,9 +3,11 @@
   path = .gituser-default
 [includeIf "gitdir:~/obi/"]
   path = .gituser-obi
+[inclueIf "gitdir:~/3as/"]
+  path = .gituser-3as
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 [gpg]
 	program = gpg
 [filter "lfs"]

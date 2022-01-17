@@ -77,30 +77,30 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git autojump zsh-autosuggestions)
 
 # Load NVM only when a .nvmrc is present
-autoload -U add-zsh-hook
-load-nvmrc() {
-  if [ -e "${PWD}/.nvmrc" ]
-  then
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    local node_version="$(nvm version)"
-    local nvmrc_path="$(nvm_find_nvmrc)"
-
-    if [ -n "$nvmrc_path" ]; then
-      local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-      if [ "$nvmrc_node_version" = "N/A" ]; then
-        nvm install
-      elif [ "$nvmrc_node_version" != "$node_version" ]; then
-        nvm use
-      fi
-    elif [ "$node_version" != "$(nvm version default)" ]; then
-      echo "Reverting to nvm default version"
-      nvm use default
-    fi
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-[ -e "${PWD}/.nvmrc" ] && load-nvmrc
+#autoload -U add-zsh-hook
+#load-nvmrc() {
+#  if [ -e "${PWD}/.nvmrc" ]
+#  then
+#    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+#    local node_version="$(nvm version)"
+#    local nvmrc_path="$(nvm_find_nvmrc)"
+#
+#    if [ -n "$nvmrc_path" ]; then
+#      local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+#
+#      if [ "$nvmrc_node_version" = "N/A" ]; then
+#        nvm install
+#      elif [ "$nvmrc_node_version" != "$node_version" ]; then
+#        nvm use
+#      fi
+#    elif [ "$node_version" != "$(nvm version default)" ]; then
+#      echo "Reverting to nvm default version"
+#      nvm use default
+#    fi
+#  fi
+#}
+#add-zsh-hook chpwd load-nvmrc
+#[ -e "${PWD}/.nvmrc" ] && load-nvmrc
 
 ZSH_DISABLE_COMPFIX=true
 
@@ -181,11 +181,16 @@ alias k='kubectl'
 alias kctx='kubectx'
 alias kns='kubens'
 alias tf='terraform'
-alias mo='molecule'
-alias ll='exa -l'
-alias open='open -a Forklift'
-alias gl='open "$(git config remote.origin.url)" -a "Google Chrome.app"'
+alias ll='lsd -l'  #'exa -l'
+#alias open='open -a Forklift'
+#alias gl='open "$(git config remote.origin.url)" -a "Google Chrome.app"'
 alias ydl='youtube-dl -f m4a -o "%(title)s.%(ext)s" --embed-thumbnail --add-metadata  --metadata-from-title "%(artist)s - %(title)s"'
+alias kubepug='kubectl deprecations'
+alias gl='git pull --all'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
