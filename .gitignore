@@ -15,7 +15,6 @@ Pictures/
 Public/
 
 # Node.js
-.config
 .node-gyp/
 .npm/
 .nvm/
